@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"target": "es2018",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"outDir": "dist",
+		"strict": true,
+		"strictNullChecks": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"checkJs": true,
+		"lib": ["ES2016", "ES2019.object", "dom"]
+	},
+	"include": ["src/**/*", "types/**/*"],
+	"exclude": ["node_modules", "**/*.spec.ts"]
+}

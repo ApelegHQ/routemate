@@ -1,0 +1,54 @@
+{
+	"name": "@exact-realty/routemate",
+	"version": "1.0.0",
+	"description": "",
+	"dist": "dist/index.js",
+	"main": "dist/index.js",
+	"module": "./dist/index.mjs",
+	"exports": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js"
+	},
+	"files": [
+			"dist/**/*"
+	],
+	"devDependencies": {
+		"@azure/functions": "^3.5.1",
+		"@cloudflare/workers-types": "^4.20230404.0",
+		"@types/aws-lambda": "^8.10.114",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "^18.15.11",
+		"@typescript-eslint/eslint-plugin": "^5.58.0",
+		"@typescript-eslint/parser": "^5.58.0",
+		"deno-types": "^1.25.0",
+		"esbuild": "^0.17.16",
+		"eslint": "^8.38.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"firebase-functions": "^4.2.1",
+		"google-closure-compiler": "^20230228.0.0",
+		"mocha": "^10.2.0",
+		"nyc": "^15.1.0",
+		"prettier": "^2.8.7",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.0.4"
+	},
+	"scripts": {
+		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+		"lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+		"build": "tsc --emitDeclarationOnly --declarationMap --declaration && node esbuild.mjs",
+		"test": "nyc mocha",
+		"prepare": "npm run build",
+		"prepublishOnly": "npm test && npm run lint",
+		"preversion": "npm run lint",
+		"postinstall": "exit 0",
+		"version": "npm run lint && git add -A src",
+		"postversion": "git push && git push --tags"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Exact-Realty/routemate.git"
+	},
+	"author": "Exact Realty Limited",
+	"license": "ISC"
+}
