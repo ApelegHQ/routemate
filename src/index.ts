@@ -19,7 +19,7 @@ export {
 	default as ResponseError_,
 	handleResponseError as handleResponseError,
 } from './ResponseError';
-export * as default from './server';
+export { default, Router } from './server';
 export type {
 	TErrorHandler,
 	TListen,

@@ -1,13 +1,24 @@
 {
 	"name": "@exact-realty/routemate",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "",
 	"dist": "dist/index.js",
 	"main": "dist/index.js",
 	"module": "./dist/index.mjs",
 	"exports": {
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.js"
+			".": {
+				"deno": "./dist/deno.mjs",
+				"cloudflare-workers": {
+					"import": "./dist/cloudflare-workers.mjs",
+					"require": "./dist/cloudflare-workers.mjs"
+				},
+				"import": "./dist/index.mjs",
+				"require": "./dist/index.js"
+			},
+			"./cloudflare-workers": {
+				"import": "./dist/cloudflare-workers.mjs",
+				"require": "./dist/cloudflare-workers.mjs"
+			}
 	},
 	"files": [
 			"dist/**/*"

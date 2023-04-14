@@ -16,28 +16,100 @@
  */
 
 import esbuild from 'esbuild';
+import nodePath from 'node:path';
 
-await esbuild.build({
+const buildOptionsBase = {
 	entryPoints: ['./src/index.ts'],
 	outdir: 'dist',
 	bundle: true,
 	minify: true,
-	format: 'cjs',
 	entryNames: '[name]',
 	platform: 'node',
 	external: ['esbuild'],
+};
+
+const formats = ['cjs', 'esm'];
+
+const filterListeners = (includeListeners, excludeListeners) => ({
+	name: 'filterListeners',
+	setup(build) {
+		build.onLoad(
+			{
+				filter: /./,
+				namespace: 'filterListeners',
+			},
+			() => ({
+				contents:
+					'const x = () => {throw Error("Unsupported listener in this build")}; export default x;',
+				loader: 'js',
+			}),
+		);
+
+		build.onResolve(
+			{
+				filter: /./,
+				namespace: 'file',
+			},
+			({ path, resolveDir }) => {
+				const resolvedPath = nodePath.resolve(resolveDir, path);
+
+				if (!/\/src\/listeners\/[^/]+$/.test(resolvedPath)) return;
+
+				const baseName = nodePath.basename(path);
+
+				if (
+					(!excludeListeners ||
+						!excludeListeners.includes(baseName)) &&
+					(!includeListeners || includeListeners.includes(baseName))
+				) {
+					return;
+				}
+
+				return {
+					external: false,
+					namespace: 'filterListeners',
+					path: path,
+				};
+			},
+		);
+	},
 });
 
-await esbuild.build({
-	entryPoints: ['./src/index.ts'],
-	outdir: 'dist',
-	bundle: true,
-	minify: true,
+await Promise.resolve(
+	formats.map((format) => {
+		return esbuild.build({
+			...buildOptionsBase,
+			format,
+			outExtension: {
+				'.js': format === 'esm' ? '.mjs' : '.js',
+			},
+			plugins: [
+				filterListeners(undefined, ['deno', 'cloudflare-workers']),
+			],
+		});
+	}),
+);
+
+await Promise.resolve(
+	formats.map((format) => {
+		return esbuild.build({
+			...buildOptionsBase,
+			format,
+			entryNames: 'cloudflare-workers',
+			outExtension: {
+				'.js': format === 'esm' ? '.mjs' : '.js',
+			},
+			plugins: [filterListeners(['cloudflare-workers', 'dynamic'])],
+		});
+	}),
+);
+
+esbuild.build({
+	...buildOptionsBase,
+	entryNames: 'deno',
 	format: 'esm',
-	entryNames: '[name]',
-	platform: 'node',
-	external: ['esbuild'],
 	outExtension: {
 		'.js': '.mjs',
 	},
+	plugins: [filterListeners(['deno', 'dynamic'])],
 });
