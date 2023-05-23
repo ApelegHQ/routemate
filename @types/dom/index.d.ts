@@ -13,11 +13,10 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import type { TListener } from '../../types/index.js';
+export {};
 
-const createServer_: TListener = (r) => async () => {
-	void r;
-	throw new Error('Not implemented');
-};
-
-export default createServer_;
+declare global {
+	interface RequestInit {
+		duplex?: 'full' | 'half';
+	}
+}

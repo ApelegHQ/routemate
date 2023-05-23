@@ -13,7 +13,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import type { TListener } from '../../types';
+import type { TListener } from '../../types/index.js';
 
 const createServer_: TListener = (r) => async () => {
 	void r;

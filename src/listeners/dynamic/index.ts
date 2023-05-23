@@ -13,8 +13,10 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-/// <reference types="@cloudflare/workers-types" />
-/// <reference types="deno-types" />
+// import type { CacheStorage } from '@cloudflare/workers-types';
+
+declare const caches: unknown;
+declare const WebSocketPair: unknown;
 
 const dynamic_ = async () => {
 	if (typeof process !== 'undefined' && process.release?.name === 'node') {
@@ -35,7 +37,7 @@ const dynamic_ = async () => {
 			process.env?.['AWS_LAMBDA_FUNCTION_VERSION'] &&
 			process.env?.['LAMBDA_TASK_ROOT']
 		) {
-			return import('../aws-lambda');
+			return import('../aws-lambda/index.js');
 		}
 
 		if (
@@ -43,17 +45,17 @@ const dynamic_ = async () => {
 				process.env?.['AZURE_FUNCTIONS_ENVIRONMENT'] ?? '',
 			)
 		) {
-			return import('../azure-functions');
+			return import('../azure-functions/index.js');
 		}
 
-		return import('../node');
+		return import('../node/index.js');
 	} else if (
 		typeof caches !== 'undefined' &&
 		typeof WebSocketPair !== 'undefined'
 	) {
-		return import('../cloudflare-workers');
+		return import('../cloudflare-workers/index.js');
 	} else if (typeof Deno !== 'undefined') {
-		return import('../deno');
+		return import('../deno/index.js');
 	} else {
 		throw new Error('Unsupported environment');
 	}

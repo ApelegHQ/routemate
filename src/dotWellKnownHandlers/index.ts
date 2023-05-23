@@ -13,4 +13,4 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-export { default as setupDotWellKnownTime } from './time';
+export { default as setupDotWellKnownTime } from './time.js';

@@ -15,7 +15,7 @@
 
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { createServer } from 'node:http';
-import { TListen, TListener, TRouter } from '../../types';
+import { TListen, TListener, TRouter } from '../../types/index.js';
 
 const nodeHandler_ =
 	(r: TRouter) => (req: IncomingMessage, res: ServerResponse) => {
@@ -44,6 +44,7 @@ const nodeHandler_ =
 				`http://${req.headers['host'] ?? 'default.local.'}${req.url}`,
 			).toString(),
 			{
+				duplex: 'half',
 				method: req.method,
 				headers: new Headers(
 					Array.from(

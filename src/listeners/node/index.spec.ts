@@ -14,9 +14,9 @@
  */
 
 import assert from 'node:assert/strict';
-import nodeListener from '.';
-import server, { Router } from '../../server';
-import { handleResponseError as handleResponseError } from '../../ResponseError';
+import nodeListener from './index.js';
+import server, { Router } from '../../server.js';
+import { handleResponseError as handleResponseError } from '../../ResponseError/index.js';
 
 const abortController = new AbortController();
 const port = (Math.random() * (1 << 15)) | 0 | (1 << 11);
@@ -63,6 +63,9 @@ before(async () => {
 
 	r.use('/eh/406', () => {
 		throw 406;
+	});
+	r.post('/post', async (req) => {
+		return new Response('body: ' + (await req.text()));
 	});
 	r['use:error']('/eh/406', handleResponseError);
 
@@ -124,6 +127,16 @@ describe('Node.js handler', () => {
 					.toLowerCase(),
 				'<!doctype html>',
 			);
+		});
+	});
+
+	it('Test 8: /post', async () => {
+		await fetch(`http://${host}:${port}/post`, {
+			method: 'POST',
+			body: 'hello, world!',
+		}).then(async (v) => {
+			assert.equal(v.status, 200);
+			assert.equal(await v.text(), 'body: hello, world!');
 		});
 	});
 });

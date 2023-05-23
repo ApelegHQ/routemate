@@ -13,8 +13,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import Router from './router';
-import type { TListener, TServer } from './types';
+import Router from './router.js';
+import type { TListener, TServer } from './types/index.js';
 
 const server_ = (listener: TListener): TServer => {
 	const router = Router();

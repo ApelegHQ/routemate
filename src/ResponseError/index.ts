@@ -13,7 +13,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { TErrorHandler } from '../types';
+import { TErrorHandler } from '../types/index.js';
 import errorResponseText from './errorResponseText.json';
 
 class ResponseError_ extends Error {

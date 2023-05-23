@@ -13,7 +13,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { TRouter } from '../types';
+import { TRouter } from '../types/index.js';
 
 const setupDotWellKnownTime_ = (router: TRouter) =>
 	router.route(

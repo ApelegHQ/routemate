@@ -14,8 +14,12 @@
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"checkJs": true,
-		"lib": ["ES2016", "ES2019.object", "dom"]
+		"lib": ["ES2016", "ES2019.object", "dom"],
+		"typeRoots": ["./node_modules/@types", "./@types"]
 	},
-	"include": ["src/**/*", "types/**/*"],
+	"ts-node": {
+		"experimentalResolver": true
+	},
+	"include": ["src/**/*"],
 	"exclude": ["node_modules", "**/*.spec.ts"]
 }

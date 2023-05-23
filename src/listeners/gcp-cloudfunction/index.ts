@@ -14,8 +14,8 @@
  */
 
 import { https } from 'firebase-functions';
-import { TListener } from '../../types';
-import { nodeHandler_ as nodeHandler } from '../node';
+import { TListener } from '../../types/index.js';
+import { nodeHandler_ as nodeHandler } from '../node/index.js';
 
 const createServer_: TListener =
 	(r) =>

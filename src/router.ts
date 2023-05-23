@@ -28,7 +28,7 @@ import type {
 	TResponse,
 	TRoute,
 	TRouter,
-} from './types';
+} from './types/index.js';
 
 const isTPHandlerFullSetupMPH = <T>(
 	args: unknown[],

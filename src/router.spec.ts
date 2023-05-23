@@ -14,7 +14,7 @@
  */
 
 import assert from 'node:assert/strict';
-import Router from './router';
+import Router from './router.js';
 
 describe('Router', () => {
 	it('No handler results in 501', async () => {

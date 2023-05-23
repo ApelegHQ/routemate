@@ -1,6 +1,6 @@
 {
 	"name": "@exact-realty/routemate",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "",
 	"dist": "dist/index.js",
 	"main": "dist/index.js",
@@ -17,7 +17,7 @@
 			},
 			"./cloudflare-workers": {
 				"import": "./dist/cloudflare-workers.mjs",
-				"require": "./dist/cloudflare-workers.mjs"
+				"re5quire": "./dist/cloudflare-workers.mjs"
 			}
 	},
 	"files": [
@@ -43,6 +43,14 @@
 		"prettier": "^2.8.7",
 		"ts-node": "^10.9.1",
 		"typescript": "^5.0.4"
+	},
+	"peerDependencies": {
+		"firebase-functions": "^4.2.1"
+	},
+	"peerDependenciesMeta": {
+		"firebase-functions": {
+			"optional": true
+		}
 	},
 	"scripts": {
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",

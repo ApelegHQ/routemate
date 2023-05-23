@@ -13,8 +13,8 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-export * as dotWellKnownHandlers from './dotWellKnownHandlers';
-export * as listeners from './listeners';
+export * as dotWellKnownHandlers from './dotWellKnownHandlers/index.js';
+export * as listeners from './listeners/index.js';
 export {
 	default as ResponseError_,
 	handleResponseError as handleResponseError,

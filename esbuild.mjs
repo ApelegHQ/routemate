@@ -25,7 +25,7 @@ const buildOptionsBase = {
 	minify: true,
 	entryNames: '[name]',
 	platform: 'node',
-	external: ['esbuild'],
+	external: ['firebase-functions'],
 };
 
 const formats = ['cjs', 'esm'];

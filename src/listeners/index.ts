@@ -13,7 +13,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-export { default as cloudflareWorkers } from './cloudflare-workers';
-export { default as deno } from './deno';
-export { default as dynamic } from './dynamic';
-export { default as node, nodeHandler_ as nodeHandler } from './node';
+export { default as cloudflareWorkers } from './cloudflare-workers/index.js';
+export { default as deno } from './deno/index.js';
+export { default as dynamic } from './dynamic/index.js';
+export { default as node, nodeHandler_ as nodeHandler } from './node/index.js';

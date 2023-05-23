@@ -15,7 +15,7 @@
 
 /// <reference types="deno-types" />
 
-import type { TListener } from '../../types';
+import type { TListener } from '../../types/index.js';
 
 const createServer_: TListener =
 	(r) =>
@@ -78,7 +78,7 @@ const createServer_: TListener =
 
 		(async () => {
 			for await (const conn of server) {
-				serveHttp(conn);
+				serveHttp(conn).catch(Boolean);
 			}
 		})();
 
