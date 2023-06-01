@@ -51,7 +51,7 @@ const isTPHandlerSetupH = <T>(
 ): args is Parameters<TPHandlerSetupH<T>> =>
 	args.length === 1 && typeof args[0] === 'function';
 
-const router_ = () => {
+const router_ = (handleUnhandledErrors = true) => {
 	const requestHandlers: TRoute<TRequestHandler>[] = [];
 	const errorHandlers: TRoute<TErrorHandler>[] = [];
 
@@ -74,7 +74,7 @@ const router_ = () => {
 			)
 			.map(([, , h]) => h);
 
-		return Promise.resolve(
+		const result = Promise.resolve(
 			pipeline.reduce<TMaybePromised<TResponse>>(
 				async (acc, cv) => cv(request, await acc, url),
 				undefined,
@@ -133,16 +133,19 @@ const router_ = () => {
 				}
 
 				throw e;
-			})
-			.catch((e) => {
-				if (typeof e === 'number') {
-					return new Response(null, { ['status']: e });
-				} else if (e instanceof Response) {
-					return e;
-				}
-
-				return new Response(null, { ['status']: 500 });
 			});
+
+		return !handleUnhandledErrors
+			? result
+			: result.catch((e) => {
+					if (typeof e === 'number') {
+						return new Response(null, { ['status']: e });
+					} else if (e instanceof Response) {
+						return e;
+					}
+
+					return new Response(null, { ['status']: 500 });
+			  });
 	};
 
 	return (() => {
@@ -238,6 +241,7 @@ const router_ = () => {
 					'COPY',
 					'MOVE',
 					'LOCK',
+					'SEARCH',
 				].includes(prop.toUpperCase())
 			) {
 				throw new TypeError(

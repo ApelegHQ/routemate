@@ -81,11 +81,15 @@ const nodeHandler_ =
 					});
 
 					const reader = stdRes.body.getReader();
+					const closeHandler = () => reader.cancel().catch(Boolean);
 					try {
+						res.on('close', closeHandler);
+
 						for await (const chunk of chunks(reader)) {
 							res.write(chunk);
 						}
 					} finally {
+						res.off('close', closeHandler);
 						reader.releaseLock();
 					}
 				}

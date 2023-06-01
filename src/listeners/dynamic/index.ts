@@ -27,7 +27,7 @@ const dynamic_ = async () => {
 			process.env?.['K_REVISION'] &&
 			process.env?.['PORT']
 		) {
-			return import('../gcp-cloudfunction');
+			return import('../gcp-cloudfunction/index.js');
 		}
 
 		if (

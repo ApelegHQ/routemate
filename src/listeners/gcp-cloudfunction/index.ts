@@ -13,7 +13,6 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { https } from 'firebase-functions';
 import { TListener } from '../../types/index.js';
 import { nodeHandler_ as nodeHandler } from '../node/index.js';
 
@@ -24,6 +23,8 @@ const createServer_: TListener =
 		arg2?: string | AbortSignal,
 		arg3?: AbortSignal,
 	) => {
+		const { https } = await import('firebase-functions');
+
 		const signal =
 			arg3 instanceof AbortSignal
 				? arg3
