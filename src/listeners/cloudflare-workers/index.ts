@@ -13,24 +13,9 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-// /// <reference types="@cloudflare/workers-types" />
-import type {
-	EventListenerOrEventListenerObject,
-	EventTargetAddEventListenerOptions,
-	FetchEvent,
-	Response as CfResponse,
-	WorkerGlobalScopeEventMap,
-} from '@cloudflare/workers-types';
+/// <reference types="@cloudflare/workers-types" />
 
-import type { TListener } from '../../types/index.js';
-
-declare function addEventListener<Type extends keyof WorkerGlobalScopeEventMap>(
-	type: Type,
-	handler: EventListenerOrEventListenerObject<
-		WorkerGlobalScopeEventMap[Type]
-	>,
-	options?: EventTargetAddEventListenerOptions | boolean,
-): void;
+import type { TListener } from '../../common/types/index.js';
 
 const createServer_: TListener =
 	(r) =>
@@ -60,7 +45,7 @@ const createServer_: TListener =
 			);
 
 			try {
-				event.respondWith(response as unknown as Promise<CfResponse>);
+				event.respondWith(response as unknown as Promise<Response>);
 			} catch (e) {
 				void e;
 				// log error

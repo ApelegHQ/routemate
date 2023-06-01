@@ -13,10 +13,9 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-// import type { CacheStorage } from '@cloudflare/workers-types';
-
 declare const caches: unknown;
 declare const WebSocketPair: unknown;
+declare const Deno: unknown;
 
 const dynamic_ = async () => {
 	if (typeof process !== 'undefined' && process.release?.name === 'node') {

@@ -1,14 +1,19 @@
 {
 	"name": "@exact-realty/routemate",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "",
 	"dist": "dist/index.js",
 	"main": "dist/index.js",
 	"module": "./dist/index.mjs",
 	"exports": {
 			".": {
-				"deno": "./dist/deno.mjs",
+				"types": "./dist/index.d.ts",
+				"deno": {
+					"types": "./dist/index.d.ts",
+					"import": "./dist/deno.mjs"
+				},
 				"cloudflare-workers": {
+					"types": "./dist/index.d.ts",
 					"import": "./dist/cloudflare-workers.mjs",
 					"require": "./dist/cloudflare-workers.mjs"
 				},
@@ -16,8 +21,9 @@
 				"require": "./dist/index.js"
 			},
 			"./cloudflare-workers": {
+				"types": "./dist/index.d.ts",
 				"import": "./dist/cloudflare-workers.mjs",
-				"re5quire": "./dist/cloudflare-workers.mjs"
+				"require": "./dist/cloudflare-workers.mjs"
 			}
 	},
 	"files": [
@@ -25,27 +31,26 @@
 	],
 	"devDependencies": {
 		"@azure/functions": "^3.5.1",
-		"@cloudflare/workers-types": "^4.20230404.0",
-		"@types/aws-lambda": "^8.10.114",
+		"@cloudflare/workers-types": "^4.20230518.0",
+		"@types/aws-lambda": "^8.10.115",
 		"@types/mocha": "^10.0.1",
 		"@types/node": "^18.15.11",
-		"@typescript-eslint/eslint-plugin": "^5.58.0",
-		"@typescript-eslint/parser": "^5.58.0",
+		"@typescript-eslint/eslint-plugin": "^5.59.8",
+		"@typescript-eslint/parser": "^5.59.8",
 		"deno-types": "^1.25.0",
-		"esbuild": "^0.17.16",
-		"eslint": "^8.38.0",
+		"esbuild": "^0.17.19",
+		"eslint": "^8.41.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-prettier": "^4.2.1",
-		"firebase-functions": "^4.2.1",
-		"google-closure-compiler": "^20230228.0.0",
+		"firebase-functions": "^4.4.0",
 		"mocha": "^10.2.0",
 		"nyc": "^15.1.0",
-		"prettier": "^2.8.7",
+		"prettier": "^2.8.8",
 		"ts-node": "^10.9.1",
-		"typescript": "^5.0.4"
+		"typescript": "^5.1.3"
 	},
 	"peerDependencies": {
-		"firebase-functions": "^4.2.1"
+		"firebase-functions": "^4.4.0"
 	},
 	"peerDependenciesMeta": {
 		"firebase-functions": {
@@ -55,7 +60,7 @@
 	"scripts": {
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
 		"lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-		"build": "tsc --emitDeclarationOnly --declarationMap --declaration && node esbuild.mjs",
+		"build": "tsc -b --emitDeclarationOnly --declarationMap --declaration && node esbuild.mjs",
 		"test": "nyc mocha",
 		"prepare": "npm run build",
 		"prepublishOnly": "npm test && npm run lint",

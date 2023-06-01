@@ -15,7 +15,7 @@
 
 /// <reference types="deno-types" />
 
-import type { TListener } from '../../types/index.js';
+import type { TListener } from '../../common/types/index.js';
 
 const createServer_: TListener =
 	(r) =>

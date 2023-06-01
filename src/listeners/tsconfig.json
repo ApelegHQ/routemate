@@ -1,0 +1,23 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"outDir": "../../dist",
+	},
+	"include": ["*", "*.json"],
+	"exclude": ["**/*.spec.ts"],
+	"references": [
+		{
+			"path": "cloudflare-workers"
+		},
+		{
+			"path": "deno"
+		},
+		{
+			"path": "dynamic"
+		},
+		{
+			"path": "node"
+		}
+	]
+}

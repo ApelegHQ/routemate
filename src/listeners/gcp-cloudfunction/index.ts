@@ -13,7 +13,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-import { TListener } from '../../types/index.js';
+import { TListener } from '../../common/types/index.js';
 import { nodeHandler_ as nodeHandler } from '../node/index.js';
 
 const createServer_: TListener =

@@ -15,7 +15,7 @@
 
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { createServer } from 'node:http';
-import { TListen, TListener, TRouter } from '../../types/index.js';
+import { TListen, TListener, TRouter } from '../../common/types/index.js';
 
 const nodeHandler_ =
 	(r: TRouter) => (req: IncomingMessage, res: ServerResponse) => {

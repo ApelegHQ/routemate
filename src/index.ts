@@ -13,13 +13,13 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-export * as dotWellKnownHandlers from './dotWellKnownHandlers/index.js';
+export * as dotWellKnownHandlers from './common/dotWellKnownHandlers/index.js';
 export * as listeners from './listeners/index.js';
 export {
 	default as ResponseError_,
 	handleResponseError as handleResponseError,
-} from './ResponseError';
-export { default, Router } from './server';
+} from './common/ResponseError/index.js';
+export { default, Router } from './common/server.js';
 export type {
 	TErrorHandler,
 	TListen,
@@ -28,4 +28,4 @@ export type {
 	TResponse,
 	TRouter,
 	TServer,
-} from './types';
+} from './common/types/index.js';

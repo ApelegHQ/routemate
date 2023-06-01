@@ -1,0 +1,29 @@
+{
+	"extends": "../../../tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"outDir": "../../../dist",
+	},
+	"include": ["**/*"],
+	"exclude": [],
+	"references": [
+		{
+			"path": "../aws-lambda"
+		},
+		{
+			"path": "../azure-functions"
+		},
+		{
+			"path": "../cloudflare-workers"
+		},
+		{
+			"path": "../deno"
+		},
+		{
+			"path": "../gcp-cloudfunction"
+		},
+		{
+			"path": "../node"
+		}
+	]
+}
