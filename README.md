@@ -2,6 +2,13 @@
 
 Routemate is a JavaScript router with support for various environments such as Node.js, Deno and Cloudflare Workers, with more to come. It is configured similarly to Express.js but uses standard `Request`, `Response`, and `Headers` elements.
 
+ [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Exact-Realty_routemate&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Exact-Realty_routemate)
+ [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Exact-Realty_routemate&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Exact-Realty_routemate)
+ [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Exact-Realty_routemate&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Exact-Realty_routemate)
+ [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Exact-Realty_routemate&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Exact-Realty_routemate)
+ [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Exact-Realty_routemate&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Exact-Realty_routemate)
+ ![NPM Downloads](https://img.shields.io/npm/dw/@exact-realty/routemate?style=flat-square)
+
 ## Installation
 
 You can install Routemate via npm or yarn:

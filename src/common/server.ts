@@ -17,7 +17,7 @@ import Router from './router.js';
 import type { TListener, TServer } from './types/index.js';
 
 const server_ = (listener: TListener): TServer => {
-	const router = Router();
+	const router = Router(true);
 
 	const proxy: TServer = new Proxy<TServer>(router as unknown as TServer, {
 		get(target, p) {

@@ -51,7 +51,7 @@ const isTPHandlerSetupH = <T>(
 ): args is Parameters<TPHandlerSetupH<T>> =>
 	args.length === 1 && typeof args[0] === 'function';
 
-const router_ = (handleUnhandledErrors = true) => {
+const router_ = (handleUnhandledErrors = false) => {
 	const requestHandlers: TRoute<TRequestHandler>[] = [];
 	const errorHandlers: TRoute<TErrorHandler>[] = [];
 
