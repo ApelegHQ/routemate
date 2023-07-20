@@ -152,7 +152,7 @@ describe('Router', () => {
 	});
 
 	it('Routers can handle different response formats', async () => {
-		const r = Router();
+		const r = Router(true);
 
 		r.use(() => 222);
 		r.get('example/foo', () => {

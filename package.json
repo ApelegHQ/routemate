@@ -1,7 +1,7 @@
 {
 	"name": "@exact-realty/routemate",
-	"version": "1.0.3",
-	"description": "",
+	"version": "1.0.4",
+	"description": "Routemate is a JavaScript router with support for various environments such as Node.js, Deno and Cloudflare Workers, with more to come.",
 	"dist": "dist/index.js",
 	"main": "dist/index.js",
 	"module": "./dist/index.mjs",
@@ -31,26 +31,26 @@
 	],
 	"devDependencies": {
 		"@azure/functions": "^3.5.1",
-		"@cloudflare/workers-types": "^4.20230518.0",
-		"@types/aws-lambda": "^8.10.115",
+		"@cloudflare/workers-types": "^4.20230717.0",
+		"@types/aws-lambda": "^8.10.119",
 		"@types/mocha": "^10.0.1",
-		"@types/node": "^18.15.11",
-		"@typescript-eslint/eslint-plugin": "^5.59.8",
-		"@typescript-eslint/parser": "^5.59.8",
+		"@types/node": "^20.4.2",
+		"@typescript-eslint/eslint-plugin": "^6.1.0",
+		"@typescript-eslint/parser": "^6.1.0",
 		"deno-types": "^1.25.0",
-		"esbuild": "^0.17.19",
-		"eslint": "^8.41.0",
+		"esbuild": "^0.18.14",
+		"eslint": "^8.45.0",
 		"eslint-config-prettier": "^8.8.0",
-		"eslint-plugin-prettier": "^4.2.1",
-		"firebase-functions": "^4.4.0",
+		"eslint-plugin-prettier": "^5.0.0",
+		"firebase-functions": "^4.4.1",
 		"mocha": "^10.2.0",
 		"nyc": "^15.1.0",
-		"prettier": "^2.8.8",
+		"prettier": "^3.0.0",
 		"ts-node": "^10.9.1",
-		"typescript": "^5.1.3"
+		"typescript": "^5.1.6"
 	},
 	"peerDependencies": {
-		"firebase-functions": "^4.4.0"
+		"firebase-functions": "^4.4.1"
 	},
 	"peerDependenciesMeta": {
 		"firebase-functions": {
@@ -65,7 +65,6 @@
 		"prepare": "npm run build",
 		"prepublishOnly": "npm test && npm run lint",
 		"preversion": "npm run lint",
-		"postinstall": "exit 0",
 		"version": "npm run lint && git add -A src",
 		"postversion": "git push && git push --tags"
 	},
