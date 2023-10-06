@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-/* Copyright © 2021 Exact Realty Limited.
+/* Copyright © 2021 Apeleg Limited.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -16,7 +16,8 @@
  */
 
 import esbuild from 'esbuild';
-import nodePath from 'node:path';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
+import nodePath, { join } from 'node:path';
 
 const buildOptionsBase = {
 	entryPoints: ['./src/index.ts'],
@@ -113,3 +114,29 @@ esbuild.build({
 	},
 	plugins: [filterListeners(['deno', 'dynamic'])],
 });
+
+const cjsDeclarationFiles = async (directoryPath) => {
+	const entries = await readdir(directoryPath, {
+		withFileTypes: true,
+		recursive: true,
+	});
+
+	await Promise.all(
+		entries
+			.filter((entry) => {
+				return entry.isFile() && entry.name.endsWith('.d.ts');
+			})
+			.map(async (file) => {
+				const name = join(file.path, file.name);
+				const newName = name.slice(0, -2) + 'cts';
+
+				const contents = await readFile(name, { encoding: 'utf-8' });
+				await writeFile(
+					newName,
+					contents.replace(/(?<=\.)js(?=['"])/g, 'cjs'),
+				);
+			}),
+	);
+};
+
+await cjsDeclarationFiles('dist');

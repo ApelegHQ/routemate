@@ -7,18 +7,18 @@ Routemate is a JavaScript router with support for various environments such as N
  [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Exact-Realty_routemate&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Exact-Realty_routemate)
  [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Exact-Realty_routemate&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Exact-Realty_routemate)
  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Exact-Realty_routemate&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Exact-Realty_routemate)
- ![NPM Downloads](https://img.shields.io/npm/dw/@exact-realty/routemate?style=flat-square)
+ ![NPM Downloads](https://img.shields.io/npm/dw/@apeleghq/routemate?style=flat-square)
 
 ## Installation
 
 You can install Routemate via npm or yarn:
 
 ```sh
-npm install "@exact-realty/routemate"
+npm install "@apeleghq/routemate"
 ```
 
 ```sh
-yarn add "@exact-realty/routemate"
+yarn add "@apeleghq/routemate"
 ```
 
 ## Getting Started
@@ -26,7 +26,7 @@ yarn add "@exact-realty/routemate"
 Here's an example of setting up Routemate for Node.js:
 
 ```js
-import server, { listeners } from '@exact-realty/routemate';
+import server, { listeners } from '@apeleghq/routemate';
 import nodeListener from './node';
 // Optional error handler
 import { handleResponseError } from 'routemate/dist/ResponseError';
@@ -52,7 +52,7 @@ router['use:error'](handleResponseError);
 `Router` is the base router method. It provides several methods to set up routing like `.use` and`.route` (`['use:error']` and `['route:error']` can be used for setting up error handlers). It also provides convenience methods for the standard HTTP methods, like `.get`, `.head`, `.post`, etc.
 
 ```js
-import { Router } from '@exact-realty/routemate';
+import { Router } from '@apeleghq/routemate';
 
 const r = Router();
 
@@ -115,7 +115,7 @@ The main entry point for Routemate is the `server`. A `server` is similar to a `
 The `.listen` method returns a `Promise` that evaluates to a `Router` when successful. It takes three optional arguments, a port number, a hostname and an `AbortSignal` instance. Not all listeners support all arguments. Some listeners may require certain arguments (like a port number) to be given.
 
 ```js
-import server, { listeners } from '@exact-realty/routemate';
+import server, { listeners } from '@apeleghq/routemate';
 
 const app = server(listeners.node);
 

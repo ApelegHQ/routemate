@@ -1,4 +1,4 @@
-/* Copyright © 2023 Exact Realty Limited. All rights reserved.
+/* Copyright © 2023 Apeleg Limited. All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -29,8 +29,8 @@ class ResponseError_ extends Error {
 			typeof cause !== 'undefined'
 				? cause
 				: typeof message !== 'undefined' && typeof message !== 'string'
-				? message
-				: undefined;
+					? message
+					: undefined;
 		this.name = 'ResponseError';
 		this.statusCode = statusCode;
 	}
@@ -52,8 +52,8 @@ const errorHandler_: TErrorHandler = (error) => {
 		typeof error === 'number'
 			? error
 			: error instanceof ResponseError_
-			? error.statusCode
-			: 500;
+				? error.statusCode
+				: 500;
 
 	return new Response(
 		Object.prototype.hasOwnProperty.call(
@@ -62,7 +62,7 @@ const errorHandler_: TErrorHandler = (error) => {
 		)
 			? errorResponseText[
 					String(statusCode) as keyof typeof errorResponseText
-			  ]
+				]
 			: null,
 		{
 			['status']: statusCode,

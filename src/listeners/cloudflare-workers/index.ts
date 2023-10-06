@@ -1,4 +1,4 @@
-/* Copyright © 2023 Exact Realty Limited. All rights reserved.
+/* Copyright © 2023 Apeleg Limited. All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -28,10 +28,10 @@ const createServer_: TListener =
 			arg3 instanceof AbortSignal
 				? arg3
 				: arg2 instanceof AbortSignal
-				? arg2
-				: arg1 instanceof AbortSignal
-				? arg1
-				: undefined;
+					? arg2
+					: arg1 instanceof AbortSignal
+						? arg1
+						: undefined;
 
 		addEventListener('fetch', (event: FetchEvent) => {
 			const response = r(event.request as unknown as Request).catch(

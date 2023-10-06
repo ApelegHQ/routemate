@@ -1,4 +1,4 @@
-/* Copyright © 2023 Exact Realty Limited. All rights reserved.
+/* Copyright © 2023 Apeleg Limited. All rights reserved.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -37,7 +37,7 @@ const nodeHandler_ =
 							controller.error(e);
 						});
 					},
-			  });
+				});
 
 		const stdReq = new Request(
 			new URL(
@@ -121,16 +121,16 @@ const createServer_: TListener = (r) => {
 			typeof arg2 === 'string'
 				? arg2
 				: typeof arg1 === 'string'
-				? arg1
-				: undefined;
+					? arg1
+					: undefined;
 		const signal =
 			arg3 instanceof AbortSignal
 				? arg3
 				: arg2 instanceof AbortSignal
-				? arg2
-				: arg1 instanceof AbortSignal
-				? arg1
-				: undefined;
+					? arg2
+					: arg1 instanceof AbortSignal
+						? arg1
+						: undefined;
 
 		return new Promise<TRouter>((resolve, reject) => {
 			try {
