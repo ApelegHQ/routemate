@@ -3,7 +3,7 @@
 		"composite": true,
 		"declaration": true,
 		"target": "es2018",
-		"module": "ESNext",
+		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"outDir": "dist",
 		"strict": true,
