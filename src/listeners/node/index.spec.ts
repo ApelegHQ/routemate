@@ -14,9 +14,10 @@
  */
 
 import assert from 'node:assert/strict';
-import nodeListener from './index.js';
+import { after, before, describe, it } from 'node:test';
+import { handleResponseError } from '../../common/ResponseError/index.js';
 import server, { Router } from '../../common/server.js';
-import { handleResponseError as handleResponseError } from '../../common/ResponseError/index.js';
+import nodeListener from './index.js';
 
 const abortController = new AbortController();
 const port = (Math.random() * (1 << 15)) | 0 | (1 << 11);

@@ -59,7 +59,7 @@
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
 		"lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
 		"build": "tsc -b --emitDeclarationOnly --declarationMap --declaration && node esbuild.mjs",
-		"test": "node --loader ts-node/esm src/common/router.spec.ts",
+		"test": "node --loader ts-node/esm src/common/router.spec.ts && node --loader ts-node/esm src/listeners/node/index.spec.ts",
 		"prepack": "npm run build",
 		"prepublishOnly": "npm test && npm run lint",
 		"preversion": "npm run lint",

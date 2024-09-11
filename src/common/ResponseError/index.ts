@@ -14,7 +14,7 @@
  */
 
 import { TErrorHandler } from '../types/index.js';
-import errorResponseText from './errorResponseText.json';
+import errorResponseText from './errorResponseText.json' with { type: 'json' };
 
 class ResponseError_ extends Error {
 	cause?: Error | undefined;
