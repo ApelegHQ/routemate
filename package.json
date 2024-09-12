@@ -1,10 +1,10 @@
 {
 	"name": "@apeleghq/routemate",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "Routemate is a JavaScript router with support for various environments such as Node.js, Deno and Cloudflare Workers, with more to come.",
 	"type": "module",
-	"dist": "dist/index.js",
-	"main": "dist/index.js",
+	"dist": "dist/index.cjs",
+	"main": "dist/index.cjs",
 	"module": "./dist/index.mjs",
 	"exports": {
 			".": {
@@ -16,15 +16,15 @@
 				"cloudflare-workers": {
 					"types": "./dist/index.d.ts",
 					"import": "./dist/cloudflare-workers.mjs",
-					"require": "./dist/cloudflare-workers.mjs"
+					"require": "./dist/cloudflare-workers.cjs"
 				},
 				"import": "./dist/index.mjs",
-				"require": "./dist/index.js"
+				"require": "./dist/index.cjs"
 			},
 			"./cloudflare-workers": {
 				"types": "./dist/index.d.ts",
 				"import": "./dist/cloudflare-workers.mjs",
-				"require": "./dist/cloudflare-workers.mjs"
+				"require": "./dist/cloudflare-workers.cjs"
 			}
 	},
 	"files": [

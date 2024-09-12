@@ -82,7 +82,7 @@ await Promise.resolve(
 			...buildOptionsBase,
 			format,
 			outExtension: {
-				'.js': format === 'esm' ? '.mjs' : '.js',
+				'.js': format === 'esm' ? '.mjs' : '.cjs',
 			},
 			plugins: [
 				filterListeners(undefined, ['deno', 'cloudflare-workers']),
@@ -98,7 +98,7 @@ await Promise.resolve(
 			format,
 			entryNames: 'cloudflare-workers',
 			outExtension: {
-				'.js': format === 'esm' ? '.mjs' : '.js',
+				'.js': format === 'esm' ? '.mjs' : '.cjs',
 			},
 			plugins: [filterListeners(['cloudflare-workers', 'dynamic'])],
 		});
